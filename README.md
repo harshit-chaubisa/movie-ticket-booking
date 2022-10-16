@@ -14,5 +14,3 @@ Made three branches on the gihub and also on the local repository.
 
 Merged the feature_base_architecture branch to the staging branch on the github and deleted the feature_base_branch
 
-
-
