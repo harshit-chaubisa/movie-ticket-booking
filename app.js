@@ -1,6 +1,11 @@
 const express =require("express");
 const app  = express();
 const ck = require("ckey");
+const userRouter = require("./api/users/user.router");
+
+app.use(express.json());
+
+app.use("/api/users",userRouter);
 
 app.get("/api",(req,res)=>{
     res.json({

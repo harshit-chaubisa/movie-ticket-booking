@@ -4,3 +4,5 @@ dotenv
 mysql
 mysql2
 ckey
+bcrypt
+jsonwebtoken

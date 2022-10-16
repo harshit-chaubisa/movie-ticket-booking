@@ -21,3 +21,9 @@ Made a branch named feature_db_conn on both the ends from staging
 1. Made tables in the mysql database and also connected our node app with it also ran our node up and tested it in the postman using the basic get method.
 
 Merged the feature_db_conn branch to the staging branch.
+
+Made a branch feature_user on both the ends from staging
+    master -> staging -> feature_user
+
+# Fifth commit
+1. made the api for the signup of the user and login credentials of the end user and also made the apis for the basic CRUD operations of the user also performed the authorization of the user.
