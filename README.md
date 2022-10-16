@@ -19,3 +19,5 @@ Made a branch named feature_db_conn on both the ends from staging
 
 # Forth commit
 1. Made tables in the mysql database and also connected our node app with it also ran our node up and tested it in the postman using the basic get method.
+
+Merged the feature_db_conn branch to the staging branch.
