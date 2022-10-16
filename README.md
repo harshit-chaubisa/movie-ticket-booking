@@ -38,3 +38,6 @@ Made a branch feature_movie on both the ends from staging branch
 
 Merged feature_movie to the staging branch
 
+Made a branch feature_auditorium on both the ends from staging branch
+    master -> staging -> feature_auditorium
+

@@ -3,11 +3,13 @@ const app  = express();
 const ck = require("ckey");
 const userRouter = require("./api/users/user.router");
 const movieRouter = require("./api/movie/movie.router");
+const auditoriumRouter = require("./api/auditorium/auditorium.router")
 
 app.use(express.json());
 
 app.use("/api/users",userRouter);
 app.use("/api/movies",movieRouter);
+app.use("/api/auditoriu",auditoriumRouter); 
 
 app.get("/api",(req,res)=>{
     res.json({
