@@ -1,1 +1,6 @@
 express
+--save-dev nodemon
+dotenv
+mysql
+mysql2
+ckey

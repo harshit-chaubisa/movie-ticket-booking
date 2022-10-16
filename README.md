@@ -14,3 +14,8 @@ Made three branches on the gihub and also on the local repository.
 
 Merged the feature_base_architecture branch to the staging branch on the github and deleted the feature_base_branch
 
+Made a branch named feature_db_conn on both the ends from staging
+    master -> staging -> feature_db_conn
+
+# Forth commit
+1. Made tables in the mysql database and also connected our node app with it also ran our node up and tested it in the postman using the basic get method.
