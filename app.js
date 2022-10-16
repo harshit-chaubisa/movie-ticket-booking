@@ -2,10 +2,12 @@ const express =require("express");
 const app  = express();
 const ck = require("ckey");
 const userRouter = require("./api/users/user.router");
+const movieRouter = require("./api/movie/movie.router");
 
 app.use(express.json());
 
 app.use("/api/users",userRouter);
+app.use("/api/movies",movieRouter);
 
 app.get("/api",(req,res)=>{
     res.json({

@@ -27,3 +27,14 @@ Made a branch feature_user on both the ends from staging
 
 # Fifth commit
 1. made the api for the signup of the user and login credentials of the end user and also made the apis for the basic CRUD operations of the user also performed the authorization of the user.
+
+Merged feature_user to the staging branch
+
+Made a branch feature_movie on both the ends from staging branch
+    master -> staging -> feature_movie
+
+# Sixth commit
+1. Made the apis for the movies table where CRUD operations were also done.
+
+Merged feature_movie to the staging branch
+
