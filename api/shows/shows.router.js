@@ -1,4 +1,4 @@
-const { addShows, getShows, getShowsById, updateShows, deleteShows } = require("./shows.controller")
+const { addShows, getShows, getShowsById, updateShows, deleteShows } = require("./shows.controller");
 const router = require("express").Router();
 
 router.post("/", addShows);
