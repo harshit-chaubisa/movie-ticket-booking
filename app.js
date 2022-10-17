@@ -5,6 +5,7 @@ const userRouter = require("./api/users/user.router");
 const movieRouter = require("./api/movie/movie.router");
 const auditoriumRouter = require("./api/auditorium/auditorium.router");
 const showsRouter = require("./api/shows/shows.router");
+const bookingRouter = require("./api/booking/booking.router");
 
 app.use(express.json());
 
@@ -12,6 +13,7 @@ app.use("/api/users",userRouter);
 app.use("/api/movies",movieRouter);
 app.use("/api/auditorium",auditoriumRouter);
 app.use('/api/shows',showsRouter);
+app.use("/api/booking",bookingRouter);
 
 app.get("/api",(req,res)=>{
     res.json({

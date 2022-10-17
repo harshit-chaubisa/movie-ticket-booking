@@ -1,7 +1,7 @@
-const { create, getAuditoriumById, getAuditoriums, updateAuditorium, deleteAuditorium } = require("./auditorium.service");
+const { create, getBooking, getBookingById, updateBooking, deleteBooking } = require("./booking.service");
 
 module.exports = {
-    addAuditorium: (req,res)=>{
+    addBooking: (req,res)=>{
         const body = req.body;
         create(body,(err,results)=>{
             if(err){
@@ -17,9 +17,9 @@ module.exports = {
             });
         });
     },
-    getAuditoriumById : (req,res) => {
+    getBookingById : (req,res) => {
         const id = req.params.id;
-        getAuditoriumById(id,(error,results) =>{
+        getBookingById(id,(error,results) =>{
             if(error){
                 console.log(err);
                 return;
@@ -36,8 +36,8 @@ module.exports = {
             });
         });
     },
-    getAuditoriums: (req,res) => {
-        getAuditoriums((err,results) => {
+    getBooking: (req,res) => {
+        getBooking((err,results) => {
             if(err){
                 console.log(err);
                 return;
@@ -48,9 +48,9 @@ module.exports = {
             });
         });
     },
-    updateAuditorium : (req,res) =>{
+    updateBooking : (req,res) =>{
         const body = req.body;
-        updateAuditorium(body,(err,results) =>{
+        updateBooking(body,(err,results) =>{
             if(err){
                 console.log(err);
                 return;
@@ -58,7 +58,7 @@ module.exports = {
             if(!results){
                 return res.json({
                     success : 0,
-                    message : "Failed to update auditorium."
+                    message : "Failed to update Booking"
                 })
             }
             return res.json({
@@ -67,9 +67,9 @@ module.exports = {
             });
         });
     },
-    deleteAuditorium : (req,res) => {
+    deleteBooking : (req,res) => {
         const data = req.body;
-        deleteAuditorium(data,(err,results) => {
+        deleteBooking(data,(err,results) => {
             if(err){
                 console.log(err);
                 return;
@@ -82,7 +82,7 @@ module.exports = {
             }
             return res.json({
                 success :1,
-                message : "Auditorium deleted successfully."
+                message : "Booking deleted successfully."
             });
         });
     }

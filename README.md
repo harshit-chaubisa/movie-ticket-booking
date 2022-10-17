@@ -54,3 +54,11 @@ Made a branch feature_shows on both the ends from staging branch
 
 Merged feature_shows branch to the staging branch.
 
+Made a branch feature_booking on both the ends from staging branch
+    master -> staging -> feature_booking
+
+# Ninth commit
+1. Made all the apis for the booking entity with all the CRUD operations. And also did some changes to other files.
+
+Merged feature_booking to the staging branch.
+
