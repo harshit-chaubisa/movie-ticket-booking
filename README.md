@@ -41,3 +41,16 @@ Merged feature_movie to the staging branch
 Made a branch feature_auditorium on both the ends from staging branch
     master -> staging -> feature_auditorium
 
+# Seventh commit
+1. Made all the apis for the auditorium entity with all the CRUD operations.
+
+Merged feature_auditorium branch to the staging branch.
+
+Made a branch feature_shows on both the ends from staging branch
+    master -> staging -> feature_shows
+
+# Eighth commit
+1. Made all the apis for the shows entity with all the CRUD operations.
+
+Merged feature_shows branch to the staging branch.
+
