@@ -69,3 +69,11 @@ Made a branch feature_authorization on both the ends from staging branch
 1. Made all the apis for the admin entity with all the CRUD operations. And also implemented authorization for the admin.
 
 Merged feature_authorization to the staging branch.
+
+Made a branch delete_bugfix on both the ends from staging branch
+    master -> staging -> feature_bugfix
+
+# Eleventh commit
+1. Made the required changes for the delete operations of all the entities which were giving error.
+
+Merged delete_bugfix to the staging branch.

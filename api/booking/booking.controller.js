@@ -68,8 +68,8 @@ module.exports = {
         });
     },
     deleteBooking : (req,res) => {
-        const data = req.body;
-        deleteBooking(data,(err,results) => {
+        const id = req.params.id;
+        deleteBooking(id,(err,results) => {
             if(err){
                 console.log(err);
                 return;
