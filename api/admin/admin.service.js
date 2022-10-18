@@ -3,13 +3,10 @@ const pool = require("../../config/database");
 module.exports = {
     create: (data,callBack) =>{
         pool.query(
-            'INSERT INTO `users`(fName,lName,eMail,phNo,psswd) VALUES(?,?,?,?,?)',
+            'INSERT INTO `admin`(userName, psswd) VALUES(?,?)',
             [
-                data.fName,
-                data.lName,
-                data.eMail,
-                data.phNo,
-                data.psswd,
+                data.userName,
+                data.psswd
             ],
             (error, results, fields) =>{
                 if(error){
@@ -19,9 +16,9 @@ module.exports = {
             }
         );
     },
-    getUsers: callBack=>{
+    getAdmin: callBack=>{
         pool.query(
-            'SELECT * FROM `users`',
+            'SELECT * FROM `admin`',
             [],
             (error,results,fields) => {
                 if(error){
@@ -32,9 +29,9 @@ module.exports = {
         );
 
     },
-    getUserById: (id,callBack) =>{
+    getAdminById: (id,callBack) =>{
         pool.query(
-            'SELECT * FROM `users` WHERE id = ?',
+            'SELECT * FROM `admin` WHERE id = ?',
             [id],
             (error,results,fields) => {
                 if(error){
@@ -44,15 +41,12 @@ module.exports = {
             }
         );
     },
-    updateUser : (data,callBack) =>{
+    updateAdmin : (data,callBack) =>{
         pool.query(
-            'UPDATE `users` set fName = ?, lName = ?, eMail = ?, phNo = ?, psswd = ? where id = ?',
+            'UPDATE `admin` set userName = ?, psswd = ? where id = ?',
             [
-                data.fName,
-                data.lName,
-                data.eMail,
-                data.phNo,
-                data.Psswd,
+                data.userName,
+                data.psswd,
                 data.id
             ],
             (error, results, fields) => {
@@ -63,10 +57,10 @@ module.exports = {
             }
         )
     },
-    deleteUser : (id,callBack)=>{
+    deleteAdmin : (data,callBack)=>{
         pool.query(
-            'DELETE FROM `users` where id = ?',
-            [id],
+            'DELETE FROM `admin` where id = ?',
+            [data.id],
             (error,results,fields) => {
                 if(error){
                     return callBack(error);
@@ -75,11 +69,11 @@ module.exports = {
             }
         )
     },
-    getUserByPhNo : (phNo, callBack) =>{
-        pool.query (
-            'SELECT * FROM `users` WHERE phNo = ?',
-            [phNo],
-            (error,results,fields) => {
+    adminLogin : (userName, callBack) =>{
+        pool.query(
+            'SELECT * FROM `admin` WHERE userName = ?',
+            [userName],
+            (error, results, fields) => {
                 if(error){
                     return callBack(error);
                 }

@@ -1,9 +1,9 @@
-const { create, getUserById, getUsers, updateUser, deleteUser, getUserByPhNo, getAdmin } = require("./user.service");
+const { create, getAdmin, getAdminById, updateAdmin, deleteAdmin, adminLogin } = require("./admin.service");
 const { hashSync, genSaltSync, compareSync  } = require("bcrypt");
-const { sign, JsonWebTokenError } = require("jsonwebtoken");
+const { sign } = require("jsonwebtoken");
 
 module.exports = {
-    createUser: (req,res)=>{
+    createAdmin: (req,res)=>{
         const body = req.body;
         const salt = genSaltSync(10);
         body.psswd = hashSync(body.psswd,salt);
@@ -21,9 +21,9 @@ module.exports = {
             });
         });
     },
-    getUserById : (req,res) => {
+    getAdminById : (req,res) => {
         const id = req.params.id;
-        getUserById(id,(error,results) =>{
+        getAdminById(id,(error,results) =>{
             if(error){
                 console.log(err);
                 return;
@@ -40,8 +40,8 @@ module.exports = {
             });
         });
     },
-    getUsers: (req,res) => {
-        getUsers((err,results) => {
+    getAdmin: (req,res) => {
+        getAdmin((err,results) => {
             if(err){
                 console.log(err);
                 return;
@@ -52,11 +52,11 @@ module.exports = {
             });
         });
     },
-    updateUser : (req,res) =>{
+    updateAdmin : (req,res) =>{
         const body = req.body;
         const salt = genSaltSync(10);
         body.psswd = hashSync(body.psswd,salt);
-        updateUser(body,(err,results) =>{
+        updateAdmin(body,(err,results) =>{
             if(err){
                 console.log(err);
                 return;
@@ -64,18 +64,18 @@ module.exports = {
             if(!results){
                 return res.json({
                     success : 0,
-                    message : "failed to update user"
+                    message : "Failed to update admin"
                 })
             }
             return res.json({
                 success : 1,
-                message : "updated successfully"
+                message : "Updated successfully"
             });
         });
     },
-    deleteUser : (req,res) => {
+    deleteAdmin : (req,res) => {
         const data = req.body;
-        deleteUser(data,(err,results) => {
+        deleteAdmin(data,(err,results) => {
             if(err){
                 console.log(err);
                 return;
@@ -88,26 +88,28 @@ module.exports = {
             }
             return res.json({
                 success :1,
-                message : "user deleted successfully."
+                message : "Admin deleted successfully."
             });
         });
     },
-    login: (req,res) => {
+    adminLogin: (req,res) => {
         const body = req.body;
-        getUserByPhNo(body.phNo,(err,results) => {
-            if(err) { 
+        adminLogin(body.userName,(err,results) => {
+            if(err){
                 console.log(err);
             }
             if(!results){
                 return res.json({
-                    success : 0,
-                    data : "Invalid phone number or password."
+                    success :0,
+                    data : "Invalid username or password."
                 });
             }
-            const result = compareSync(body.psswd,results.psswd);
-            if(result){
+            const result = compareSync(body.psswd,results,psswd);
+            if(results){
                 results.psswd = undefined;
-                const jsontoken = sign({result : results}, "qwe1234");
+                const jsontoken = sign({result :results}, "ert1234", {
+                    expiresIn : "1hr"
+                });
                 return res.json({
                     success : 1,
                     message : "login successful",
@@ -116,7 +118,7 @@ module.exports = {
             }else{
                 return res.json({
                     success : 0,
-                    data : "Invalid phone number or password"
+                    data : "Invalid username or password."
                 });
             }
         });
