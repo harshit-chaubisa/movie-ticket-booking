@@ -1,10 +1,11 @@
 const { addBooking, getBooking, getBookingById, updateBooking, deleteBooking } = require("./booking.controller");
 const router = require("express").Router();
+const { checkUserToken } = require("../../auth/tokenValidation")
 
-router.post("/", addBooking);
-router.get("/", getBooking);
-router.get("/:id", getBookingById);
-router.patch("/", updateBooking);
-router.delete("/", deleteBooking);
+router.post("/", checkUserToken, addBooking);
+router.get("/", checkUserToken, getBooking);
+router.get("/:id", checkUserToken, getBookingById);
+router.patch("/",checkUserToken, updateBooking);
+router.delete("/",checkUserToken, deleteBooking);
 
 module.exports = router;

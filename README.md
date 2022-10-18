@@ -62,3 +62,10 @@ Made a branch feature_booking on both the ends from staging branch
 
 Merged feature_booking to the staging branch.
 
+Made a branch feature_authorization on both the ends from staging branch
+    master -> staging -> feature_authorization
+
+# Tenth commit 
+1. Made all the apis for the admin entity with all the CRUD operations. And also implemented authorization for the admin.
+
+Merged feature_authorization to the staging branch.
