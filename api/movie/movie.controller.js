@@ -50,7 +50,8 @@ module.exports = {
     },
     updateMovies : (req,res) =>{
         const body = req.body;
-        updateMovies(body,(err,results) =>{
+        const id = req.params.id;
+        updateMovies(body,id,(err,results) =>{
             if(err){
                 console.log(err);
                 return;

@@ -1,6 +1,7 @@
 const { create, getUserById, getUsers, updateUser, deleteUser, getUserByPhNo, getAdmin } = require("./user.service");
 const { hashSync, genSaltSync, compareSync  } = require("bcrypt");
 const { sign, JsonWebTokenError } = require("jsonwebtoken");
+const ck = require("ckey");
 
 module.exports = {
     createUser: (req,res)=>{
@@ -56,7 +57,8 @@ module.exports = {
         const body = req.body;
         const salt = genSaltSync(10);
         body.psswd = hashSync(body.psswd,salt);
-        updateUser(body,(err,results) =>{
+        const id = req.params.id;
+        updateUser(body,id,(err,results) =>{
             if(err){
                 console.log(err);
                 return;
@@ -99,7 +101,7 @@ module.exports = {
                 console.log(err);
             }
             if(!results){
-                return res.json({
+                return res.status(400).json({
                     success : 0,
                     data : "Invalid phone number or password."
                 });
@@ -107,7 +109,7 @@ module.exports = {
             const result = compareSync(body.psswd,results.psswd);
             if(result){
                 results.psswd = undefined;
-                const jsontoken = sign({result : results}, "qwe1234");
+                const jsontoken = sign({result : results}, ck.USER_SECRET);
                 return res.status(200).json({
                     success : 1,
                     message : "login successful",

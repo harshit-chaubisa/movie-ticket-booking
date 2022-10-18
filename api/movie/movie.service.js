@@ -44,7 +44,7 @@ module.exports = {
             }
         );
     },
-    updateMovies : (data,callBack) =>{
+    updateMovies : (data,id,callBack) =>{
         pool.query(
             'UPDATE `movies` set title = ?, director = ?, prodCast = ?, description = ?, durationMin = ? where id = ?',
             [
@@ -53,7 +53,7 @@ module.exports = {
                 data.prodCast,
                 data.description,
                 data.durationMin ,
-                data.id
+                id
             ],
             (error, results, fields) => {
                 if(error){

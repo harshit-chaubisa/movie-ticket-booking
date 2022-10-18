@@ -1,13 +1,14 @@
 const  { verify } = require("jsonwebtoken");
+const ck = require("ckey");
 
 module.exports ={
     checkUserToken: (req, res, next) => {
         let token = req.get("authorization");
         if(token) {
             token = token.slice(7);
-            verify(token, "qwe1234", (err,decoded) => {
+            verify(token, ck.USER_SECRET, (err,decoded) => {
                 if(err){
-                    res.json({
+                    res.status(400).json({
                         success : 0,
                         message : "Invalid token."
                     });
@@ -18,7 +19,7 @@ module.exports ={
             });
         }
         else{
-            res.json({
+            res.status(401).json({
                 success : 0,
                 message : "Access denied! Unauthorized user."
             });
@@ -28,9 +29,9 @@ module.exports ={
         let token = req.get("authorization");
         if(token) {
             token = token.slice(7);
-            verify(token, "ert1234", (err,decoded) => {
+            verify(token, ck.ADMIN_SECRET, (err,decoded) => {
                 if(err){
-                    res.json({
+                    res.status(400).json({
                         success : 0,
                         message : "Invalid token."
                     });
@@ -41,7 +42,7 @@ module.exports ={
             });
         }
         else{
-            res.json({
+            res.status(401).json({
                 success : 0,
                 message : "Access denied! Unauthorized user."
             });

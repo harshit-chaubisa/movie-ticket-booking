@@ -41,13 +41,13 @@ module.exports = {
             }
         );
     },
-    updateAuditorium : (data,callBack) =>{
+    updateAuditorium : (data,id,callBack) =>{
         pool.query(
             'UPDATE `auditorium` set name = ?, seats = ? where id = ?',
             [
                 data.name,
                 data.seats,
-                data.id
+                id
             ],
             (error, results, fields) => {
                 if(error){

@@ -5,7 +5,7 @@ const { checkAdminToken } = require("../../auth/tokenValidation");
 router.post("/", checkAdminToken,createMovie);
 router.get("/", checkAdminToken, getMovies);
 router.get("/:id", checkAdminToken, getMoviesById);
-router.patch("/", checkAdminToken, updateMovies);
+router.patch("/:id", checkAdminToken, updateMovies);
 router.delete("/:id", checkAdminToken, deleteMovie);
 
 module.exports = router;

@@ -50,7 +50,8 @@ module.exports = {
     },
     updateBooking : (req,res) =>{
         const body = req.body;
-        updateBooking(body,(err,results) =>{
+        const id = req.params.id;
+        updateBooking(body,id,(err,results) =>{
             if(err){
                 console.log(err);
                 return;

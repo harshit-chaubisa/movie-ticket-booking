@@ -43,15 +43,15 @@ module.exports = {
             }
         );
     },
-    updateBooking : (data,callBack) =>{
+    updateBooking : (data,id,callBack) =>{
         pool.query(
-            'UPDATE `booking` set movieId = ?, userId = ?, paid = ?, noOfSeats = ? where id = ?',
+            'UPDATE `booking` set showId = ?, userId = ?, paid = ?, noOfSeats = ? where id = ?',
             [
-                data.movieId,
+                data.showId,
                 data.userId,
                 data.paid,
                 data.noOfSeats,
-                data.id
+                id
             ],
             (error, results, fields) => {
                 if(error){

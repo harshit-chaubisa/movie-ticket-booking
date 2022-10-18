@@ -42,14 +42,14 @@ module.exports = {
             }
         );
     },
-    updateShows : (data,callBack) =>{
+    updateShows : (data,id,callBack) =>{
         pool.query(
             'UPDATE `shows` set movieId = ?, auditoriumId = ?, screenNo = ? where id = ?',
             [
                 data.movieId,
                 data.auditoriumId,
                 data.screenNo,
-                data.id
+                id
             ],
             (error, results, fields) => {
                 if(error){

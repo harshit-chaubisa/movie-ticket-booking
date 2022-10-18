@@ -44,7 +44,7 @@ module.exports = {
             }
         );
     },
-    updateUser : (data,callBack) =>{
+    updateUser : (data,id,callBack) =>{
         pool.query(
             'UPDATE `users` set fName = ?, lName = ?, eMail = ?, phNo = ?, psswd = ? where id = ?',
             [
@@ -52,8 +52,9 @@ module.exports = {
                 data.lName,
                 data.eMail,
                 data.phNo,
-                data.Psswd,
-                data.id
+                data.psswd,
+                id
+                
             ],
             (error, results, fields) => {
                 if(error){

@@ -1,6 +1,7 @@
 const { create, getAdmin, getAdminById, updateAdmin, deleteAdmin, adminLogin } = require("./admin.service");
 const { hashSync, genSaltSync, compareSync  } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
+const ck = require("ckey");
 
 module.exports = {
     createAdmin: (req,res)=>{
@@ -54,9 +55,10 @@ module.exports = {
     },
     updateAdmin : (req,res) =>{
         const body = req.body;
+        const id = req.params.id;
         const salt = genSaltSync(10);
         body.psswd = hashSync(body.psswd,salt);
-        updateAdmin(body,(err,results) =>{
+        updateAdmin(body,id,(err,results) =>{
             if(err){
                 console.log(err);
                 return;
@@ -104,10 +106,10 @@ module.exports = {
                     data : "Invalid username or password."
                 });
             }
-            const result = compareSync(body.psswd,results,psswd);
+            const result = compareSync(body.psswd,results.psswd);
             if(results){
                 results.psswd = undefined;
-                const jsontoken = sign({result :results}, "ert1234", {
+                const jsontoken = sign({result :results}, ck.ADMIN_SECRET, {
                     expiresIn : "1hr"
                 });
                 return res.status(200).json({

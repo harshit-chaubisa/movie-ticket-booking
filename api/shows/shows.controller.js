@@ -50,7 +50,8 @@ module.exports = {
     },
     updateShows : (req,res) =>{
         const body = req.body;
-        updateShows(body,(err,results) =>{
+        const id = req.params.id;
+        updateShows(body,id,(err,results) =>{
             if(err){
                 console.log(err);
                 return;

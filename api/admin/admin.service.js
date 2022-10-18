@@ -41,13 +41,13 @@ module.exports = {
             }
         );
     },
-    updateAdmin : (data,callBack) =>{
+    updateAdmin : (data,id,callBack) =>{
         pool.query(
             'UPDATE `admin` set userName = ?, psswd = ? where id = ?',
             [
                 data.userName,
                 data.psswd,
-                data.id
+                id
             ],
             (error, results, fields) => {
                 if(error){
