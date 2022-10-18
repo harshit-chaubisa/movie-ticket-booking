@@ -15,7 +15,7 @@ module.exports = {
                     message: "Database connection error."
                 });
             }
-            return res.status(200).json({
+            return res.status(201).json({
                 success: 1,
                 data: results
             });
@@ -29,12 +29,12 @@ module.exports = {
                 return;
             }
             if(!results){
-                return res.json({
+                return res.status(404).json({
                     success : 0,
                     message : "Record not found."
                 });
             }
-            return res.json({
+            return res.status(200).json({
                 success : 1,
                 data : results
             });
@@ -46,7 +46,7 @@ module.exports = {
                 console.log(err);
                 return;
             }
-            return res.json({
+            return res.status(200).json({
                 success : 1,
                 data : results
             });
@@ -62,12 +62,12 @@ module.exports = {
                 return;
             }
             if(!results){
-                return res.json({
+                return res.status(400).json({
                     success : 0,
                     message : "failed to update user"
                 })
             }
-            return res.json({
+            return res.status(200).json({
                 success : 1,
                 message : "updated successfully"
             });
@@ -81,12 +81,12 @@ module.exports = {
                 return;
             }
             if(!results){
-                return res.json({
+                return res.status(404).json({
                     success : 1,
                     message : "Record not Found"
                 });
             }
-            return res.json({
+            return res.status(200).json({
                 success :1,
                 message : "user deleted successfully."
             });
@@ -108,13 +108,13 @@ module.exports = {
             if(result){
                 results.psswd = undefined;
                 const jsontoken = sign({result : results}, "qwe1234");
-                return res.json({
+                return res.status(200).json({
                     success : 1,
                     message : "login successful",
                     token : jsontoken
                 });
             }else{
-                return res.json({
+                return res.status(401).json({
                     success : 0,
                     data : "Invalid phone number or password"
                 });

@@ -15,7 +15,7 @@ module.exports = {
                     message: "Database connection error."
                 });
             }
-            return res.status(200).json({
+            return res.status(201).json({
                 success: 1,
                 data: results
             });
@@ -29,12 +29,12 @@ module.exports = {
                 return;
             }
             if(!results){
-                return res.json({
+                return res.status(404).json({
                     success : 0,
                     message : "Record not found."
                 });
             }
-            return res.json({
+            return res.status(200).json({
                 success : 1,
                 data : results
             });
@@ -46,7 +46,7 @@ module.exports = {
                 console.log(err);
                 return;
             }
-            return res.json({
+            return res.status(200).json({
                 success : 1,
                 data : results
             });
@@ -62,12 +62,12 @@ module.exports = {
                 return;
             }
             if(!results){
-                return res.json({
+                return res.status(400).json({
                     success : 0,
                     message : "Failed to update admin"
                 })
             }
-            return res.json({
+            return res.status(200).json({
                 success : 1,
                 message : "Updated successfully"
             });
@@ -81,12 +81,12 @@ module.exports = {
                 return;
             }
             if(!results){
-                return res.json({
+                return res.status(404).json({
                     success : 1,
                     message : "Record not Found"
                 });
             }
-            return res.json({
+            return res.status(200).json({
                 success :1,
                 message : "Admin deleted successfully."
             });
@@ -99,7 +99,7 @@ module.exports = {
                 console.log(err);
             }
             if(!results){
-                return res.json({
+                return res.status(401).json({
                     success :0,
                     data : "Invalid username or password."
                 });
@@ -110,13 +110,13 @@ module.exports = {
                 const jsontoken = sign({result :results}, "ert1234", {
                     expiresIn : "1hr"
                 });
-                return res.json({
+                return res.status(200).json({
                     success : 1,
                     message : "login successful",
                     token : jsontoken
                 });
             }else{
-                return res.json({
+                return res.status(401).json({
                     success : 0,
                     data : "Invalid username or password."
                 });
