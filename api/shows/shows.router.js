@@ -6,6 +6,6 @@ router.post("/", checkAdminToken, addShows);
 router.get("/", checkAdminToken, getShows);
 router.get("/:id",checkAdminToken, getShowsById);
 router.patch("/", checkAdminToken, updateShows);
-router.delete("/", checkAdminToken, deleteShows);
+router.delete("/:id", checkAdminToken, deleteShows);
 
 module.exports = router;

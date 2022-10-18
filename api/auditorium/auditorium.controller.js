@@ -68,8 +68,8 @@ module.exports = {
         });
     },
     deleteAuditorium : (req,res) => {
-        const data = req.body;
-        deleteAuditorium(data,(err,results) => {
+        const id = req.params.id;
+        deleteAuditorium(id,(err,results) => {
             if(err){
                 console.log(err);
                 return;
