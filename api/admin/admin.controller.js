@@ -74,8 +74,8 @@ module.exports = {
         });
     },
     deleteAdmin : (req,res) => {
-        const data = req.body;
-        deleteAdmin(data,(err,results) => {
+        const id = req.params.id;
+        deleteAdmin(id,(err,results) => {
             if(err){
                 console.log(err);
                 return;

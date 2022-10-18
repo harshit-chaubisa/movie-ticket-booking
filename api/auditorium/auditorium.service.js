@@ -57,10 +57,10 @@ module.exports = {
             }
         )
     },
-    deleteAuditorium : (data,callBack)=>{
+    deleteAuditorium : (id,callBack)=>{
         pool.query(
             'DELETE FROM `auditorium` where id = ?',
-            [data.id],
+            [id],
             (error,results,fields) => {
                 if(error){
                     return callBack(error);

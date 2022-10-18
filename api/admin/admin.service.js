@@ -57,10 +57,10 @@ module.exports = {
             }
         )
     },
-    deleteAdmin : (data,callBack)=>{
+    deleteAdmin : (id,callBack)=>{
         pool.query(
             'DELETE FROM `admin` where id = ?',
-            [data.id],
+            [id],
             (error,results,fields) => {
                 if(error){
                     return callBack(error);

@@ -68,8 +68,8 @@ module.exports = {
         });
     },
     deleteShows : (req,res) => {
-        const data = req.body;
-        deleteShows(data,(err,results) => {
+        const id = req.params.id;
+        deleteShows(id,(err,results) => {
             if(err){
                 console.log(err);
                 return;

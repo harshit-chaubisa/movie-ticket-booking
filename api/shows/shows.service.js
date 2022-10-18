@@ -59,10 +59,10 @@ module.exports = {
             }
         )
     },
-    deleteShows : (data,callBack)=>{
+    deleteShows : (id,callBack)=>{
         pool.query(
             'DELETE FROM `shows` where id = ?',
-            [data.id],
+            [id],
             (error,results,fields) => {
                 if(error){
                     return callBack(error);

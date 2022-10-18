@@ -68,8 +68,8 @@ module.exports = {
         });
     },
     deleteMovie : (req,res) => {
-        const data = req.body;
-        deleteMovie(data,(err,results) => {
+        const id = req.params.id;
+        deleteMovie(id,(err,results) => {
             if(err){
                 console.log(err);
                 return;

@@ -6,6 +6,6 @@ router.post("/", checkAdminToken, addAuditorium);
 router.get("/", checkAdminToken, getAuditoriums);
 router.get("/:id", checkAdminToken, getAuditoriumById);
 router.patch("/", checkAdminToken, updateAuditorium);
-router.delete("/", checkAdminToken, deleteAuditorium);
+router.delete("/:id", checkAdminToken, deleteAuditorium);
 
 module.exports = router;
